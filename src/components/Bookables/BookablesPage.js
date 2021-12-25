@@ -1,5 +1,9 @@
+import BookablesList from "./BookablesList";
+
 export default function BookablesPage() {
     return (
-        <div><p>Bookables Page!!</p></div>
+        <main className='bookables-page'>
+           <BookablesList/>
+        </main>
     )
 }
