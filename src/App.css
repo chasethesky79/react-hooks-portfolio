@@ -112,7 +112,8 @@ main {
 .App {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  margin: auto;
+  flex-direction: column;
 }
 
 .items-list-nav {
@@ -149,4 +150,10 @@ main {
 .items-list-nav .selected .btn {
   background: var(--primary);
   color: var(--light-text);
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  margin: auto;
 }
