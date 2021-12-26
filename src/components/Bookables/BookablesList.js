@@ -41,7 +41,7 @@ export default function BookablesList() {
                             <label><input type='checkbox' checked={showDetails} onChange={() => setShowDetails(showDetails => !showDetails)}/>Show Details</label>
                         </span>
                     </div>
-                <p>{bookable.notes}</p>
+                {showDetails && <p>{bookable.notes}</p>}
               </div>
           )}
         </>
