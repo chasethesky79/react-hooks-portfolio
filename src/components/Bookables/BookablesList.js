@@ -14,7 +14,6 @@ export default function BookablesList() {
     const [bookableIndex, setBookableIndex] = useState(0);
     const [showDetails, setShowDetails] = useState(false);
     const bookable = bookablesInGroup[bookableIndex];
-    const { sessions : bookableSessions, days: bookableDays } = bookable;
 
     function changeBookable(selectedIndex) {
         setBookableIndex(selectedIndex);
@@ -48,18 +47,14 @@ export default function BookablesList() {
                     <h3>Availability</h3>
                     <div className='bookable-details-sections'> 
                         <div>
-                            {bookableSessions && 
-                                <ul>
-                                  {bookableSessions.map((bookableSession, index) => <li key={index}>{sessions[bookableSession]}</li>)}
-                                </ul>
-                            }
+                            <ul>
+                                {bookable.sessions.map((bookableSession, index) => <li key={index}>{sessions[bookableSession]}</li>)}
+                            </ul>
                         </div>
                         <div>
-                            {bookableDays && 
-                                <ul>
-                                  {bookableDays.map((bookableDay, index) => <li key={index}>{days[bookableDay]}</li>)}
-                                </ul>
-                            }
+                            <ul>
+                                {bookable.days.map((bookableDay, index) => <li key={index}>{days[bookableDay]}</li>)}
+                            </ul>
                         </div>
                     </div>
                 </div>}
