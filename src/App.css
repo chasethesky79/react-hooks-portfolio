@@ -177,9 +177,21 @@ nav {
   margin: auto;
 }
 
-.bookable-details-header {
+.bookable-details-header, .bookable-details-sections {
   display: flex;
+}
+.bookable-details-header {
   justify-content: space-between;
+}
+.bookable-details-info {
+  background: dimgray;
+  padding: 20px;
+  color: white;
+}
+.bookable-details-info > h3 {
+  text-align: left;
+}
+.bookable-details-header {
   background: black;
   align-items: baseline;
   margin-top: 20px;
@@ -189,7 +201,6 @@ nav {
   margin-left: 10px;
   margin-right: 10px;
 }
-.bookable-details-header, .bookable-details-body > h3, .bookable-details-info > ul {
+.bookable-details-header, .bookable-details-body > h3, .bookable-details-sections > ul {
   color: var(--light-text);
-  margin-top: 7px;
 }

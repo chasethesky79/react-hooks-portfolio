@@ -1,4 +1,4 @@
-import { bookables } from '../../../src/static.json';
+import { bookables, days, sessions } from '../../../src/static.json';
 import { useState } from 'react';
 import { FaArrowRight } from 'react-icons/fa';
 
@@ -14,6 +14,7 @@ export default function BookablesList() {
     const [bookableIndex, setBookableIndex] = useState(0);
     const [showDetails, setShowDetails] = useState(false);
     const bookable = bookablesInGroup[bookableIndex];
+    const { sessions : bookableSessions, days: bookableDays } = bookable;
 
     function changeBookable(selectedIndex) {
         setBookableIndex(selectedIndex);
@@ -41,7 +42,27 @@ export default function BookablesList() {
                             <label><input type='checkbox' checked={showDetails} onChange={() => setShowDetails(showDetails => !showDetails)}/>Show Details</label>
                         </span>
                     </div>
-                {showDetails && <p>{bookable.notes}</p>}
+                {showDetails &&
+                <div className='bookable-details-info'>
+                    <p style={{ textAlign: 'left' }}>{bookable.notes}</p>
+                    <h3>Availability</h3>
+                    <div className='bookable-details-sections'> 
+                        <div>
+                            {bookableSessions && 
+                                <ul>
+                                  {bookableSessions.map((bookableSession, index) => <li key={index}>{sessions[bookableSession]}</li>)}
+                                </ul>
+                            }
+                        </div>
+                        <div>
+                            {bookableDays && 
+                                <ul>
+                                  {bookableDays.map((bookableDay, index) => <li key={index}>{days[bookableDay]}</li>)}
+                                </ul>
+                            }
+                        </div>
+                    </div>
+                </div>}
               </div>
           )}
         </>
