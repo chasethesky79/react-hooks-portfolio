@@ -1,7 +1,7 @@
 import { bookables, days, sessions } from '../../../src/static.json';
 import { useReducer } from 'react';
 import { FaArrowRight } from 'react-icons/fa';
-import { bookablesReducer } from '../reducers/bookablesReducer';
+import { bookablesReducer } from '../../reducers/bookablesReducer';
 
 const initialState = {
     bookables,

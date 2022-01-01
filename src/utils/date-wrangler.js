@@ -1,14 +1,14 @@
-export function getWeek(current, daysOffSet = 0) {
+export function getWeek(date, daysOffSet = 0) {
     if (daysOffSet > 0) {
-      current.setDate(current.getDate() + daysOffSet);
+      date.setDate(date.getDate() + daysOffSet);
     }
-    const day = current.getDay();
-    const firstDayOfWeek = new Date(current);
+    const day = date.getDay();
+    const firstDayOfWeek = new Date(date);
     firstDayOfWeek.setDate(firstDayOfWeek.getDate() - day);
-    const lastDayOfWeek = new Date(current);
+    const lastDayOfWeek = new Date(date);
     lastDayOfWeek.setDate(lastDayOfWeek.getDate() + (7 - day));
     return {
-      current,
+      date,
       firstDayOfWeek,
       lastDayOfWeek
     }

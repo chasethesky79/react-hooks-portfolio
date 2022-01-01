@@ -204,3 +204,8 @@ nav {
 .bookable-details-header, .bookable-details-body > h3, .bookable-details-sections > ul {
   color: var(--light-text);
 }
+.week-picker {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 10px;
+}
