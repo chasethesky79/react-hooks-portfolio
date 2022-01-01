@@ -1,5 +1,5 @@
 const NEXT_WEEK = 'NEXT_WEEK';
-const PREV_WEEK = 'PREV-WEEK';
+const PREV_WEEK = 'PREV_WEEK';
 const CURRENT_WEEK = 'CURRENT_WEEK';
 const SET_DATE = 'SET_DATE';
 
