@@ -1,5 +1,5 @@
 export function getWeek(date, daysOffSet = 0) {
-    if (daysOffSet > 0) {
+    if (daysOffSet) {
       date.setDate(date.getDate() + daysOffSet);
     }
     const day = date.getDay();
