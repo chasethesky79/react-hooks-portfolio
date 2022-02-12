@@ -1,4 +1,4 @@
-import  { SET_BOOKABLE_INDEX, SET_GROUP, SET_NEXT_BOOKABLE, TOGGLE_BOOKABLE_DETAILS } from '../actions/bookablesActions';
+import  { SET_BOOKABLE_INDEX, SET_GROUP, SET_NEXT_BOOKABLE_INDEX, TOGGLE_BOOKABLE_DETAILS } from '../actions/bookablesActions';
 
 export function bookablesReducer(state = {}, action) {
     switch(action.type) {
@@ -6,7 +6,7 @@ export function bookablesReducer(state = {}, action) {
             return { ...state, bookableIndex: action.payload };
         case SET_GROUP:
             return { ...state, group: action.payload, bookableIndex: 0 };
-        case SET_NEXT_BOOKABLE: {
+        case SET_NEXT_BOOKABLE_INDEX: {
             const { bookableIndex, bookables, group } = state;
             const bookablesInGroup = bookables?.filter(bookable => bookable.group === group);
             return { ...state, bookableIndex: (bookableIndex + 1) % bookablesInGroup.length };
