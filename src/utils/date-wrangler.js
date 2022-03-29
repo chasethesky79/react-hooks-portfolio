@@ -1,4 +1,4 @@
-export function getWeek(date, daysOffSet = 0) {
+function getWeek(date, daysOffSet = 0) {
     if (daysOffSet) {
       date.setDate(date.getDate() + daysOffSet);
     }
@@ -13,3 +13,14 @@ export function getWeek(date, daysOffSet = 0) {
       lastDayOfWeek
     }
 }
+
+function getData(url) {
+  return fetch(url).then(resp => {
+    if (!resp.ok) {
+       throw new Error("Error fetching data from server");
+    }
+    return resp.json();
+  });
+}
+
+export { getData, getWeek }
