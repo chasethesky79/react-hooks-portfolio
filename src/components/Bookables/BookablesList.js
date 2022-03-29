@@ -14,7 +14,7 @@ const initialState = {
 }
 export default function BookablesList() {
     const [state, dispatch] = useReducer(bookablesReducer, initialState);
-    const { bookables, bookableIndex, group, showDetails } = state;
+    const { bookables, bookableIndex, group, showDetails, error, isLoading } = state;
     const groups = bookables?.reduce((acc, element) => {
       if (!acc.includes(element.group)) {
           acc = [...acc, element.group]
@@ -34,6 +34,14 @@ export default function BookablesList() {
               payload: error
           }))
     }, [])
+
+    if(error) {
+        return <p>{error?.message}</p>
+    }
+
+    if (isLoading) {
+      return<p style={{ 'float': 'center' }}>Loading Bookables...</p>
+    }
 
     function changeBookable(selectedIndex) {
         dispatch({ type: 'SET_BOOKABLE_INDEX', payload: selectedIndex });
