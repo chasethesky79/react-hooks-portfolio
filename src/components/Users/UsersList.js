@@ -1,12 +1,39 @@
-import { users } from '../../../src/static.json';
-import { useState } from 'react';
+import { userReducer } from '../../reducers/userReducer';
+import { useReducer, useEffect } from 'react';
 import { FaArrowRight } from 'react-icons/fa';
+import { getData  } from '../../utils/date-wrangler';
 
+const initialState = {
+    users: [],
+    isLoading: true,
+    error: false,
+    userIndex: 0
+}
 export default function UsersList() {
-    const [userIndex, setUserIndex] = useState(0);
+    const [state, dispatch] = useReducer(userReducer, initialState);
+    const { users, isLoading, error, userIndex } = state;
+    useEffect(() => {
+        dispatch({ type: 'FETCH_USERS_REQUEST' });
+        getData("http://localhost:3001/users")
+          .then(bookables => dispatch( {
+              type: 'FETCH_USERS_SUCCESS',
+              payload: bookables
+          })).catch(error => dispatch({
+              type: 'FETCH_USERS_ERROR',
+              payload: error
+          }))
+    }, [])
+
+    if(error) {
+        return <p>{error?.message}</p>
+    }
+
+    if (isLoading) {
+      return<p style={{ 'float': 'center' }}>Loading Users...</p>
+    }
 
     function handleSelectUser(selectedIndex) {
-        setUserIndex(selectedIndex);
+        dispatch({ type: 'SET_USER_INDEX', payload: selectedIndex });
     }
 
     return (
@@ -17,7 +44,7 @@ export default function UsersList() {
                 </li>)}
             </ul>
             <p>
-            <button className='btn' onClick={() => setUserIndex(bookableIndex => (bookableIndex + 1) % users.length)} autoFocus>
+            <button className='btn' onClick={() => dispatch({ type: 'SET_USER_INDEX', payload: (userIndex + 1) % users.length })} autoFocus>
                 <FaArrowRight/><span>Next</span></button>
             </p>
         </div>
